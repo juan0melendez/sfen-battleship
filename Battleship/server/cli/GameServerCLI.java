@@ -3,7 +3,10 @@ package server.cli;
 import java.io.IOException;
 
 import server.communication.GameServer;
-
+/**
+* Allows the server to be started without a
+* heavy GUI
+*/
 public class GameServerCLI
 {
 	private GameServer server;
