@@ -49,7 +49,8 @@ public class Database
 	/**
 	 * The method creates a JDBC Statement object that executes the query.
 	 * 
-	 * @param query an SQL query (i.e., select statement).
+	 * @param query
+	 *            an SQL query (i.e., select statement).
 	 * @return ArrayList<String> all the data resulting from the query: a comma
 	 *         delimited record separating each field
 	 */
@@ -97,9 +98,11 @@ public class Database
 	/**
 	 * creates a JDBC Statement object that executes the DML statement
 	 * 
-	 * @param dml contains a SQL Data Modification Language statement (i.e., insert,
+	 * @param dml
+	 *            contains a SQL Data Modification Language statement (i.e., insert,
 	 *            update, or delete)
-	 * @throws SQLException thrown if statement fails
+	 * @throws SQLException
+	 *             thrown if statement fails
 	 */
 	public void executeDML(String dml) throws SQLException
 	{

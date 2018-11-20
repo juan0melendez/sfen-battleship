@@ -3,6 +3,7 @@ package client.gui;
 import java.awt.*;
 import javax.swing.*;
 
+import client.communication.ChatClient;
 import client.controller.LoginControl;
 
 import java.awt.event.*;
@@ -39,11 +40,11 @@ public class LoginPanel extends JPanel
 	}
 
 	// Constructor for the login panel.
-	public LoginPanel(LoginControl lc)
+	public LoginPanel(JPanel container, ChatClient client)
 	{
 		// Create the controller and set it in the chat client.
-		// LoginControl controller = new LoginControl(container, client);
-		// client.setLoginControl(controller);
+		LoginControl controller = new LoginControl(container, client);
+		client.setLoginControl(controller);
 
 		// Create a panel for the labels at the top of the GUI.
 		JPanel labelPanel = new JPanel(new GridLayout(2, 1, 5, 5));
@@ -67,9 +68,9 @@ public class LoginPanel extends JPanel
 		// Create a panel for the buttons.
 		JPanel buttonPanel = new JPanel();
 		JButton submitButton = new JButton("Submit");
-		submitButton.addActionListener(lc);
+		submitButton.addActionListener(controller);
 		JButton cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(lc);
+		cancelButton.addActionListener(controller);
 		buttonPanel.add(submitButton);
 		buttonPanel.add(cancelButton);
 

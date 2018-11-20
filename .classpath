@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Battleship"/>
+	<classpathentry kind="lib" path="C:/Users/jarre/git/sfen-battleship/ocsf.jar" sourcepath="D:/School/Fall 2018/Software Engineering/Software/OCSFSource(1).zip">
+		<attributes>
+			<attribute name="javadoc_location" value="http://www.site.uottawa.ca/school/research/lloseng/supportMaterial/ocsf/doc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

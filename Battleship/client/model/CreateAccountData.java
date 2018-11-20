@@ -1,9 +1,8 @@
-package database;
+package client.model;
 
 import java.io.Serializable;
 
-//I moved this class here due to the fact the other one was auto generated and looked messy no real change
-public class User implements Serializable
+public class CreateAccountData implements Serializable
 {
 	// Private data fields for the username and password.
 	private String username;
@@ -32,7 +31,7 @@ public class User implements Serializable
 	}
 
 	// Constructor that initializes the username and password.
-	public User(String username, String password)
+	public CreateAccountData(String username, String password)
 	{
 		setUsername(username);
 		setPassword(password);

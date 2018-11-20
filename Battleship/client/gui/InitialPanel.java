@@ -17,23 +17,23 @@ import client.controller.InitialControl;
 public class InitialPanel extends JPanel
 {
 	// Constructor for the initial panel.
-	public InitialPanel(InitialControl ic)
+	public InitialPanel(JPanel container)
 	{
 		// Create the controller.
-		// InitialControl controller = new InitialControl(container);
+		InitialControl controller = new InitialControl(container);
 
 		// Create the information label.
 		JLabel label = new JLabel("Account Information", JLabel.CENTER);
 
 		// Create the login button.
 		JButton loginButton = new JButton("Login");
-		loginButton.addActionListener(ic);
+		loginButton.addActionListener(controller);
 		JPanel loginButtonBuffer = new JPanel();
 		loginButtonBuffer.add(loginButton);
 
 		// Create the create account button.
 		JButton createButton = new JButton("Create");
-		createButton.addActionListener(ic);
+		createButton.addActionListener(controller);
 		JPanel createButtonBuffer = new JPanel();
 		createButtonBuffer.add(createButton);
 
