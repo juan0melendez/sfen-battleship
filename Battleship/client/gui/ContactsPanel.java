@@ -8,6 +8,7 @@ public class ContactsPanel extends JPanel
 	// Constructor for the contacts panel.
 	public ContactsPanel(JPanel container)
 	{
+		
 		// Create a list of example contacts.
 		DefaultListModel<String> list = new DefaultListModel<String>();
 		list.addElement("Person One");

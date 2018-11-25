@@ -47,6 +47,8 @@ public class ChatClient extends AbstractClient
 			{
 				createAccountControl.createAccountSuccess();
 			}
+			
+			//delegate which client to send which message to 
 		}
 
 		// If we received an Error, figure out where to display it.
