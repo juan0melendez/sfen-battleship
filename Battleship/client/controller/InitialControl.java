@@ -3,8 +3,8 @@ package client.controller;
 import java.awt.*;
 import javax.swing.*;
 
-import client.gui.CreateAccountPanel;
-import client.gui.LoginPanel;
+import client.panels.CreateAccountPanel;
+import client.panels.LoginPanel;
 
 import java.awt.event.*;
 
@@ -45,10 +45,10 @@ public class InitialControl implements ActionListener
 		// The Create button takes the user to the create account panel.
 		else if (command.equals("Create"))
 		{
-			// Handle CreatAccount Here
-			CreateAccountPanel createAccountPanel = (CreateAccountPanel) container.getComponent(1);
-			CardLayout cardLayout = (CardLayout) container.getLayout();
-			cardLayout.show(container, "3");
+			CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(2);
+		    createAccountPanel.setError("");
+		    CardLayout cardLayout = (CardLayout)container.getLayout();
+		    cardLayout.show(container, "3");
 		}
 	}
 }
