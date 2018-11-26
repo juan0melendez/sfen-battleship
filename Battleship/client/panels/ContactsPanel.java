@@ -1,4 +1,4 @@
-package client.gui;
+package client.panels;
 
 import java.awt.*;
 import javax.swing.*;

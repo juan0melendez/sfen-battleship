@@ -1,4 +1,4 @@
-package client.gui;
+package client.panels;
 
 import javax.swing.*;
 
@@ -6,7 +6,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import client.communication.ChatClient;
-import client.gui.*;
+import client.panels.*;
 import database.User;
 
 public class ClientGUI extends JFrame

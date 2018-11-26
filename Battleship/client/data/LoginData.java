@@ -1,8 +1,7 @@
-package client.model;
+package client.data;
 
 import java.io.Serializable;
 
-import game.model.Validatable;
 
 /**
  * model component that allows the user's data to be stored and sent to the
@@ -11,7 +10,7 @@ import game.model.Validatable;
  * @author juan
  *
  */
-public class LoginData implements Serializable, Validatable
+public class LoginData implements Serializable
 {
 	// Private data fields for the username and password.
 	private String username;

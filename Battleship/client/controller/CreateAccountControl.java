@@ -9,9 +9,9 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
 import client.communication.ChatClient;
-import client.gui.ClientGUI;
-import client.gui.CreateAccountPanel;
-import client.model.CreateAccountData;
+import client.data.CreateAccountData;
+import client.panels.ClientGUI;
+import client.panels.CreateAccountPanel;
 import database.User;
 
 /************************************************************/

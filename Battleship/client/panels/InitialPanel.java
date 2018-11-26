@@ -1,11 +1,7 @@
-package client.gui;
+package client.panels;
 
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import java.awt.*;
+import javax.swing.*;
 import client.controller.InitialControl;
 
 /**

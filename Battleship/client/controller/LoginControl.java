@@ -1,12 +1,12 @@
 package client.controller;
 
+import client.communication.ChatClient;
+import client.data.LoginData;
+import client.panels.ClientGUI;
+import client.panels.LoginPanel;
+import database.User;
 import java.awt.*;
 import javax.swing.*;
-
-import client.communication.ChatClient;
-import client.gui.LoginPanel;
-import client.model.LoginData;
-
 import java.awt.event.*;
 import java.io.IOException;
 
@@ -18,29 +18,18 @@ import java.io.IOException;
  */
 public class LoginControl implements ActionListener
 {
-	/**
-	 * What is the "deck" in the deck of cards metaphor?
-	 */
+	// Private data fields for the container and chat client.
 	private JPanel container;
-	/**
-	 * Class for the communication logic
-	 */
 	private ChatClient client;
 
-	/**
-	 * 
-	 * @param container the deck
-	 * @param client    the communication logic
-	 */
+	// Constructor for the login controller.
 	public LoginControl(JPanel container, ChatClient client)
 	{
 		this.container = container;
 		this.client = client;
 	}
 
-	/**
-	 * handles button clicks
-	 */
+	// Handle button clicks.
 	public void actionPerformed(ActionEvent ae)
 	{
 		// Get the name of the button clicked.
@@ -65,42 +54,34 @@ public class LoginControl implements ActionListener
 			{
 				displayError("You must enter a username and password.");
 				return;
-			} else
-			{
-				try
-				{
-					client.sendToServer(data);
-				} catch (IOException e)
-				{
-					client.connectionException(e);
-				}
 			}
 
 			// Submit the login information to the server.
-
+			try
+			{
+				client.sendToServer(data);
+			} catch (IOException e)
+			{
+				displayError("Error connecting to the server.");
+			}
 		}
 	}
 
-	/**
-	 * After the login is successful, set the User object and display the contacts
-	 * screen. - this method would be invoked by the ChatClient
-	 * 
-	 */
+	// After the login is successful, set the User object and display the contacts
+	// screen.
 	public void loginSuccess()
 	{
-
+		LoginPanel loginPanel = (LoginPanel) container.getComponent(1);
+		ClientGUI clientGUI = (ClientGUI) SwingUtilities.getWindowAncestor(loginPanel);
+		clientGUI.setUser(new User(loginPanel.getUsername(), loginPanel.getPassword()));
+		CardLayout cardLayout = (CardLayout) container.getLayout();
+		cardLayout.show(container, "4");
 	}
 
-	/**
-	 * Method that displays a message in the error - could be invoked by ChatClient
-	 * or by this class
-	 * 
-	 * @param error
-	 */
+	// Method that displays a message in the error label.
 	public void displayError(String error)
 	{
 		LoginPanel loginPanel = (LoginPanel) container.getComponent(1);
 		loginPanel.setError(error);
-
 	}
 }
