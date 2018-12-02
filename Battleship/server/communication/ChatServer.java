@@ -24,7 +24,7 @@ public class ChatServer extends AbstractServer
 	{
 		super(12345);
 		this.setTimeout(500);
-		//this.database = new Database();
+		this.database = new Database();
 	}
 
 	// Getter that returns whether the server is currently running.

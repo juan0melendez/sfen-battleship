@@ -26,7 +26,7 @@ public class Database
 
 		// Read properties file
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("Battleship/database/db.properties");
+		FileInputStream fis = new FileInputStream("Battleship/db.properties");
 		prop.load(fis);
 		String url = prop.getProperty("url");
 		String user = prop.getProperty("user");
@@ -58,7 +58,7 @@ public class Database
 		// Execute a query
 		try
 		{
-			rs = stmt.executeQuery("select * from User WHERE username = \"" + username + "\" AND aes_decrypt(password, 'key') = \"" + password + "\"");
+			rs = stmt.executeQuery("select * from Users WHERE username = \"" + username + "\" AND aes_decrypt(password, 'key') = \"" + password + "\"");
 		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block
@@ -85,7 +85,7 @@ public class Database
 		
 		try
 		{
-			rs = stmt.executeQuery("select * from User WHERE username = \"" + username + "\"");
+			rs = stmt.executeQuery("select * from Users WHERE username = \"" + username + "\"");
 		} catch (SQLException e)
 		{
 			e.printStackTrace();
@@ -94,7 +94,7 @@ public class Database
 		if(rs.next() == false) {
 			try
 			{
-				stmt.execute("insert into User values('" + username + "', aes_encrypt('" + password + "', 'key'));");
+				stmt.execute("insert into Users values('" + username + "', aes_encrypt('" + password + "', 'key'));");
 			} catch(SQLException e1)
 			{
 				e1.printStackTrace();

@@ -44,8 +44,10 @@ public class ContactsPanel extends JPanel
 		JPanel contactButtons = new JPanel();
 		JButton deleteButton = new JButton("Delete Contact");
 		JButton addButton = new JButton("Add Contact");
+		JButton playButton = new JButton("Play Game");
 		contactButtons.add(deleteButton);
 		contactButtons.add(addButton);
+		contactButtons.add(playButton);
 		buttonsPanel.add(contactButtons, BorderLayout.NORTH);
 		JButton logoutButton = new JButton("Log Out");
 		JPanel logoutButtonBuffer = new JPanel();

@@ -4,35 +4,47 @@
 
 package client.data;
 
+
+import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /************************************************************/
 /**
  * 
  */
-public class StartGameData
+public class StartGameData implements Serializable
 {
 
-	private boolean options;
-
-	public StartGameData()
+	private Rectangle2D square;
+	private byte[][] stateMatrix;
+	private Ship[] ships;
+	private static int TOTAL_SHIPS = 5;
+	private static int LENGTHS[] = {2, 3, 3, 4, 5};
+	private int row[];
+	private int col[];
+	
+	//constructor that passes the data types
+	public StartGameData(Rectangle2D square)
 	{
-
-	}
-	public StartGameData(boolean val)
-	{
+		setSquare(square);
+		
+		for(int i = 0; i < TOTAL_SHIPS; i++)
+		{
+			ships[i].setLength(LENGTHS[i]);
+		}
 		
 	}
-	public Boolean getOptions()
-	{
-		return options;
-	}
-
-	public void setOptions(Boolean options)
-	{
-	}
-
-	public void setDefaultOptions(Boolean options)
-	{
-	}
-
 	
+	
+	public Rectangle2D getSquare()
+	{
+		return square;
+	}
+
+	// Setters for the username and password.
+	public void setSquare(Rectangle2D square)
+	{
+		this.square = square;
+	}
 }

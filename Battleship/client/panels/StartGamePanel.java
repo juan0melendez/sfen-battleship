@@ -4,8 +4,16 @@
 
 package client.panels;
 
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.awt.geom.*;
 import javax.swing.*;
 import client.controller.StartGameControl;
+import client.data.Ship;
+import client.data.StartGameData;
+import client.communication.ChatClient;
 
 /************************************************************/
 /**
@@ -13,21 +21,164 @@ import client.controller.StartGameControl;
  */
 public class StartGamePanel extends JPanel
 {
+	private int dim = 60;
+	private int height = 600;
+	private Graphics2D g2;
+	private int width = 600;
+	private JLabel errorLabel;
+	private ArrayList<Rectangle2D> gridSquares;
+	private ArrayList<Rectangle2D> shipsGrid;
+//	private int[] columns;
+//	private int[] rows;
+	private int dir;
+	private StartGameData sgd;
+	
+	//private Shape selectedSquare = null;
+	private Ship ship;
 
-	private JButton logOut;
-	private JLabel options;
-	private JButton createGame;
-	private JLabel defaultsChecked;
-	private JButton findGame;
-
-	public StartGamePanel(StartGameControl sgc)
+	public StartGamePanel(JPanel container, ChatClient client)
 	{
+		StartGameControl controller = new StartGameControl(container, client);
+		client.setStartGameControl(controller);
+
+		gridSquares = new ArrayList<Rectangle2D>();
+
+		shipsGrid = new ArrayList<Rectangle2D>();
+
+		// preparing main panel
+		setLayout(new GridLayout(10, 10, 0, 0));
+		setBackground(Color.white);
+		setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.BLACK));
+
+		// draw squares for gridSquares
+		for (int x = 0; x < width; x += dim)
+		{
+
+			for (int y = 0; y < height; y += dim)
+			{
+				// draw the rectangles for grid
+				Rectangle2D square = new Rectangle2D.Double(x, y, dim, dim);
+
+				gridSquares.add(square);
+
+			}
+		}
+
 		
+		
+		
+//		// draw squares for shipsGrid this is using the initial locations and afterwards will be using the drag and drop locations
+//		for (int x = 0; x < width; x += dim)
+//		{
+//
+//			for (int y = 0; y < height; y += dim)
+//			{
+//				// draw the rectangles for grid
+//				Rectangle2D ship = new Rectangle2D.Double(x, y, dim, dim);
+//
+//				shipsGrid.add(ship);
+//
+//			}
+//		}	
+		//might need to change this
+//		addMouseListener(new MyMouseListener());
+//		//combobox for selecting the ships size
+//		JComboBox comboBox = new JComboBox();
+//		
+//		 comboBox.addActionListener(new ActionListener() 
+//	      {
+//	      	public void actionPerformed(ActionEvent e) 
+//	      	{
+//	      		
+//	      		//makes an object for the specific selectedGenre
+//	      		Object selectedSquare = comboBox.getSelectedItem();
+//	      		String currKey = String.valueOf(selectedGenre);
+//	      	
+//	      		ArrayList<String>rows = new ArrayList<String>();
+//	      		rows = sgd.search(currKey);
+//	      		
+//	      		for(String r : rows)
+//	      		{
+//	      			textArea.append(a + "\n");
+//	      		}
+//	      		counter++;
+//	      	}
+//	      });	      
+//	      comboBox.setModel(new DefaultComboBoxModel(myGenres));
+//	      comboBox.setBounds(250, 115, 138, 20);
+//	      add(comboBox);
+		}
+
+	
+	
+//	private class MyMouseListener extends MouseAdapter
+//	{
+//		@Override
+//		public void mousePressed(MouseEvent e)
+//		{
+//			for (int i = gridSquares.size() - 1; i >= 0; i--)
+//			{
+//				if (gridSquares.get(i).contains(e.getPoint()))
+//				{
+//					selectedSquare = gridSquares.get(i);
+//					repaint();
+//					return;
+//				}
+//			}
+//		}
+//	}
+
+	@Override
+	protected void paintComponent(Graphics g)
+	{
+		// need to make the ships draggable and rotatable in this class
+		super.paintComponent(g);
+		g2 = (Graphics2D) g;
+		g2.setStroke(new BasicStroke(3));
+		g2.setColor(Color.black);
+
+		// draw the rectangles on grid panel
+		for (Rectangle2D square : gridSquares)
+		{
+			// draw the rectangles for grid
+			g2.draw(square);
+		}
+		// for (int i = 0; i < gridSquares.size(); i++)
+		// {
+		// g2.draw(gridSquares.get(i));
+		// }
+
+		// we need to dynamically draw the ships based on random numbers and the player
+		// may
+		// move the ships around and rotate them via a button, basically select a ship
+		// then
+		// perform a rotate after you select a button
+
+		
+		
+		
+		// draw the ships on the shipsGrid
+//		for (Rectangle2D ship : shipsGrid)
+//		{
+//			// draw the rectangles for grid
+//			g2.draw(ship);
+//			g2.fill(ship);
+//			//g2.setColor(Color.red);
+//		}
+
+		
+		
+
+	}
+
+	public ArrayList<Rectangle2D> getGrid()
+	{
+		return gridSquares;
 	}
 
 	public void setError(String error)
 	{
-		
+		errorLabel.setText(error);
 	}
 
 	public Boolean getOptions()
@@ -39,4 +190,5 @@ public class StartGamePanel extends JPanel
 	{
 		return null;
 	}
+
 }

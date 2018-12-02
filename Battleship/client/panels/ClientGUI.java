@@ -16,10 +16,11 @@ public class ClientGUI extends JFrame
 	private JPanel view2;
 	private JPanel view3;
 	private JPanel view4;
-
+	private JPanel view5;
+	
 	// Private data field for the chat client.
 	private ChatClient client;
-
+	
 	// Private data field for the user object.
 	private User user;
 
@@ -65,12 +66,14 @@ public class ClientGUI extends JFrame
 		view2 = new LoginPanel(container, client);
 		view3 = new CreateAccountPanel(container, client);
 		view4 = new ContactsPanel(container);
+		view5 = new StartGamePanel(container, client);
 
 		// Add the views to the card layout container.
 		container.add(view1, "1");
 		container.add(view2, "2");
 		container.add(view3, "3");
 		container.add(view4, "4");
+		container.add(view5, "5");
 
 		// Show the initial view in the card layout.
 		cardLayout.show(container, "1");

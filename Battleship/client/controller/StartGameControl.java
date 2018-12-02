@@ -8,21 +8,28 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
+import client.communication.ChatClient;
+import client.data.StartGameData;
+import client.panels.ClientGUI;
+import client.panels.StartGamePanel;
+
 
 /************************************************************/
 /**
  * 
  */
-public class StartGameControl
+public class StartGameControl implements ActionListener
 {
 	/**
 	 * 
 	 */
 	private JPanel container;
-
-	public StartGameControl(JPanel container)
+	private ChatClient client;
+	
+	public StartGameControl(JPanel container, ChatClient client)
 	{
-
+		this.container = container;
+		this.client = client;
 	}
 
 	public void actionPerformed(ActionEvent ae)
@@ -33,14 +40,21 @@ public class StartGameControl
 	/**
 	 * 
 	 */
+	//also known as gamestartSuccess
 	public void gameStarted()
 	{
-
+		//StartGamePanel startGamePanel = (StartGamePanel) container.getComponent(1);
+		//I believe we dont need this as this is getting the user and password (specific to login)
+		//ClientGUI clientGUI = (ClientGUI) SwingUtilities.getWindowAncestor(startGamePanel);
+		//clientGUI.setUser(new User(startGamePanel.getUsername(), loginPanel.getPassword()));
+		CardLayout cardLayout = (CardLayout) container.getLayout();
+		cardLayout.show(container, "5");
 	}
 
 	public void displayError(String error)
 	{
-
+		StartGamePanel startGamePanel = (StartGamePanel) container.getComponent(1);
+		startGamePanel.setError(error);
 	}
 
 }

@@ -3,16 +3,23 @@ package client.communication;
 import ocsf.client.AbstractClient;
 import client.controller.CreateAccountControl;
 import client.controller.LoginControl;
+import client.controller.StartGameControl;
 
 public class ChatClient extends AbstractClient
 {
 	// Private data fields for storing the GUI controllers.
 	private LoginControl loginControl;
 	private CreateAccountControl createAccountControl;
+	private StartGameControl startGameControl;
 
 	public ChatClient()
 	{
 		super("localhost", 8300);
+	}
+	
+	public ChatClient(String ipaddress)
+	{
+		super(ipaddress, 8300);
 	}
 
 	// Setters for the GUI controllers.
@@ -24,6 +31,11 @@ public class ChatClient extends AbstractClient
 	public void setCreateAccountControl(CreateAccountControl createAccountControl)
 	{
 		this.createAccountControl = createAccountControl;
+	}
+	
+	public void setStartGameControl(StartGameControl startGameControl)
+	{
+		this.startGameControl = startGameControl;
 	}
 
 	@Override
