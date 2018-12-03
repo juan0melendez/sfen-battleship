@@ -4,6 +4,8 @@
 
 package client.data;
 
+import java.awt.geom.Rectangle2D;
+
 /************************************************************/
 /**
  * 
@@ -12,16 +14,29 @@ public class PlayingData
 {
 
 	private String opponent;
-
+	private Rectangle2D square;
+	
+	
 	public void setOpponent(Boolean opponent)
 	{
 
 	}
 
-	public Boolean getOpponent()
+	public String getOpponent()
 	{
 
 		// probably need to change return type
-		return null;
+		return opponent;
+	}
+	
+	public Rectangle2D getSquare()
+	{
+		return square;
+	}
+
+	// Setters for the username and password.
+	public void setSquare(Rectangle2D square)
+	{
+		this.square = square;
 	}
 }

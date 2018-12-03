@@ -28,16 +28,22 @@ public class StartGamePanel extends JPanel
 	private JLabel errorLabel;
 	private ArrayList<Rectangle2D> gridSquares;
 	private ArrayList<Rectangle2D> shipsGrid;
-//	private int[] columns;
-//	private int[] rows;
-	private int dir;
+	private String[] cols = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+	private String[] rows = {"A", "B", "C","D", "E", "F","G", "H", "I", "J"};
+	private boolean dir;
 	private StartGameData sgd;
+	
+	private JComboBox<String> rowcombo;
+	private JComboBox<String> colcombo;
+	private JComboBox dircombo;
+	private JComboBox shipcombo;
 	
 	//private Shape selectedSquare = null;
 	private Ship ship;
 
 	public StartGamePanel(JPanel container, ChatClient client)
 	{
+		
 		StartGameControl controller = new StartGameControl(container, client);
 		client.setStartGameControl(controller);
 
@@ -64,7 +70,15 @@ public class StartGamePanel extends JPanel
 			}
 		}
 
-		
+		JPanel startGamePanel = new JPanel(new GridLayout(2, 2, 5, 5));
+		JLabel rowLabel = new JLabel("Row: ", JLabel.RIGHT);
+		rowcombo = new JComboBox<>(rows);
+		JLabel colLabel = new JLabel("Column: ", JLabel.RIGHT);
+		colcombo = new JComboBox<>(cols);
+		startGamePanel.add(rowLabel);
+		startGamePanel.add(rowcombo);
+		startGamePanel.add(colLabel);
+		startGamePanel.add(colcombo);
 		
 		
 //		// draw squares for shipsGrid this is using the initial locations and afterwards will be using the drag and drop locations

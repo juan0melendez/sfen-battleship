@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class StartGameData implements Serializable
 {
 
-	private Rectangle2D square;
+	
 	private byte[][] stateMatrix;
 	private Ship[] ships;
 	private static int TOTAL_SHIPS = 5;
@@ -27,24 +27,17 @@ public class StartGameData implements Serializable
 	//constructor that passes the data types
 	public StartGameData(Rectangle2D square)
 	{
-		setSquare(square);
+		
 		
 		for(int i = 0; i < TOTAL_SHIPS; i++)
 		{
 			ships[i].setLength(LENGTHS[i]);
 		}
 		
+		
+		
 	}
 	
 	
-	public Rectangle2D getSquare()
-	{
-		return square;
-	}
-
-	// Setters for the username and password.
-	public void setSquare(Rectangle2D square)
-	{
-		this.square = square;
-	}
+	
 }

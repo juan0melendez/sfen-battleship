@@ -9,10 +9,11 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
 import client.communication.ChatClient;
+import client.data.LoginData;
 import client.data.StartGameData;
 import client.panels.ClientGUI;
+import client.panels.LoginPanel;
 import client.panels.StartGamePanel;
-
 
 /************************************************************/
 /**
@@ -25,7 +26,7 @@ public class StartGameControl implements ActionListener
 	 */
 	private JPanel container;
 	private ChatClient client;
-	
+
 	public StartGameControl(JPanel container, ChatClient client)
 	{
 		this.container = container;
@@ -34,19 +35,58 @@ public class StartGameControl implements ActionListener
 
 	public void actionPerformed(ActionEvent ae)
 	{
+		// Get the name of the button clicked.
+		String command = ae.getActionCommand();
+		
+		if (command == "Cancel")
+		{
+			CardLayout cardLayout = (CardLayout) container.getLayout();
+			cardLayout.show(container, "1");
+		}
+
+		// The Submit button submits the login information to the server.
+		else if (command == "Confirm Ship")
+		{
+			
+		}
+		else if (command == "Start Game")
+		{
+			// Get the username and password the user entered.
+//			StartGamePanel startGamePanel = (LoginPanel) container.getComponent(1);
+//			StartGameData data = new StartGameData(startGamePanel.getUsername(), startGamePanel.getPassword());
+//
+//			// Check the validity of the information locally first.
+//			if (data.getUsername().equals("") || data.getPassword().equals(""))
+//			{
+//				displayError("You must enter a username and password.");
+//				return;
+//			}
+//
+//			// Submit the login information to the server.
+//			try
+//			{
+//				client.sendToServer(data);
+//			} catch (IOException e)
+//			{
+//				displayError("Error connecting to the server.");
+//			}
+		}
 
 	}
 
 	/**
 	 * 
 	 */
-	//also known as gamestartSuccess
-	public void gameStarted()
+	// also known as gamestartSuccess
+	public void startGame()
 	{
-		//StartGamePanel startGamePanel = (StartGamePanel) container.getComponent(1);
-		//I believe we dont need this as this is getting the user and password (specific to login)
-		//ClientGUI clientGUI = (ClientGUI) SwingUtilities.getWindowAncestor(startGamePanel);
-		//clientGUI.setUser(new User(startGamePanel.getUsername(), loginPanel.getPassword()));
+		// StartGamePanel startGamePanel = (StartGamePanel) container.getComponent(1);
+		// I believe we dont need this as this is getting the user and password
+		// (specific to login)
+		// ClientGUI clientGUI = (ClientGUI)
+		// SwingUtilities.getWindowAncestor(startGamePanel);
+		// clientGUI.setUser(new User(startGamePanel.getUsername(),
+		// loginPanel.getPassword()));
 		CardLayout cardLayout = (CardLayout) container.getLayout();
 		cardLayout.show(container, "5");
 	}
